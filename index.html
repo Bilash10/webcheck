@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Elementary Education Department, Nalbari</title>
+  <style>
+    body {
+      font-family: Century Schoolbook, sans-serif;
+      margin: 0;
+      background: #f4f4f4;
+    }
+
+    html {
+      scroll-padding-top: 36px;
+    }
+
+    header {
+  background: #00BFFF;
+  color: #fff;
+  padding: 10px 20px; /* reduced from 20px 40px */
+  text-align: center;
+}
+
+.header-logo {
+  width: 50px; /* reduced from 70px */
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid pink;
+  display: block;
+  margin: 0 auto 8px auto;
+}
+
+.header-center h1 {
+  margin: 10px 0 5px;
+  font-size: 2rem; /* increased for desktop view */
+}
+
+@media (max-width: 768px) {
+  .header-center h1 {
+    font-size: 1.2rem; /* reduced for mobile view */  }
+}
+
+.header-center p {
+  margin: 0;
+  font-size: 0.95rem; /* slightly smaller */
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 8px 15px;
+  }
+
+  .header-logo {
+    width: 45px; /* reduced from 60px */
+    height: 45px;
+    margin-bottom: 6px;
+  }
+
+  .header-center h1 {
+    font-size: 1.2rem; /* reduced from 1.4rem */
+  }
+
+  .header-center p {
+    font-size: 0.85rem; /* slightly smaller */
+  }
+}
+
+
+    .header-logo {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid pink;
+      display: block;
+      margin: 0 auto 10px auto;
+    }
+
+    nav {
+      background: #00FFFF;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .menu-toggle {
+      display: none;
+      background-color: #00bfff;
+      color: white;
+      padding: 10px;
+      border: none;
+      width: 100%;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .menu-items {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      padding: 10px 0;
+    }
+
+    .menu-items a {
+      color: black;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .menu-items a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+      background: white;
+    }
+
+    section {
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      border-bottom: 2px solid #004080;
+      padding-bottom: 5px;
+      color: #004080;
+    }
+
+    h3 {
+      color: #004080;
+      margin-top: 30px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #004080;
+      color: white;
+    }
+
+    .gallery img {
+      width: 100%;
+      max-width: 300px;
+      margin: 10px;
+      border: 2px solid #ccc;
+    }
+#lightbox {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+#lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border: 4px solid white;
+  box-shadow: 0 0 10px #000;
+}
+
+.lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  font-size: 3rem;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  user-select: none;
+  z-index: 2100;
+}
+
+.lightbox-arrow.left {
+  left: 20px;
+}
+
+.lightbox-arrow.right {
+  right: 20px;
+}
+
+    .document-list a {
+      display: block;
+      margin-bottom: 5px;
+      color: #004080;
+    }
+
+    .deeo-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .deeo-note img {
+      max-width: 200px;
+      border: 2px solid #ccc;
+    }
+
+    .deeo-text {
+      max-width: 900px;
+    }
+
+    details {
+      margin-left: 20px;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .menu-items {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+        background: #e0ffff;
+      }
+
+      .menu-items.show {
+        display: flex;
+      }
+
+      .menu-items a {
+        padding: 10px 0;
+        border-bottom: 1px solid #ccc;
+      }
+
+      header {
+        padding: 15px 20px;
+      }
+
+      .header-logo {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 8px;
+      }
+
+      .header-center h1 {
+        font-size: 1.4rem;
+      }
+
+      .header-center p {
+        font-size: 0.9rem;
+      }
+
+      .container {
+        padding: 15px;
+      }
+
+      .deeo-note {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .deeo-note img {
+        max-width: 90%;
+        height: auto;
+      }
+
+      .deeo-text {
+        max-width: 100%;
+      }
+
+      .gallery {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .gallery img {
+        max-width: 90%;
+        height: auto;
+      }
+
+      footer {
+        font-size: 0.9rem;
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-center">
+    <img src="https://i.ibb.co/HM1s90d/IMG-8549.jpg" alt="Department Logo" class="header-logo">
+    <h1>Elementary Education Department, Nalbari</h1>
+    <p>Committed to Quality Education at the Grassroots</p>
+  </div>
+</header>
+
+<nav>
+  <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+  <div class="menu-items" id="menuItems">
+    <a href="#home" onclick="closeMenu()">Home</a>
+    <a href="#about" onclick="closeMenu()">About Us</a>
+    <a href="#initiatives" onclick="closeMenu()">Initiatives</a>
+    <a href="#gallery" onclick="closeMenu()">Gallery</a>
+    <a href="#documents" onclick="closeMenu()">Documents</a>
+    <a href="#schools" onclick="closeMenu()">Schools</a>
+    <a href="#contact" onclick="closeMenu()">Contact</a>
+  </div>
+</nav>
+
+<div class="container">
+  <section id="home">
+    <h2>Welcome to Elementary Education Department, Nalbari</h2>
+    <p>This website is a dedicated platform to share updates, initiatives, documents, and activities of the Elementary Education Department, Nalbari. We strive to keep stakeholders informed and engaged in the mission of improving education at the elementary level across the district.</p>
+
+    <h3>Note from the District Elementary Education Officer (DEEO), Nalbari</h3>
+    <div class="deeo-note">
+      <img src="https://i.ibb.co/CsbQPsX2/PIC-1.jpg" alt="DEEO, Nalbari Photo">
+      <div class="deeo-text">
+        <p>I am pleased to welcome you to the official website of the Elementary Education Department, Nalbari. Our department is committed to ensuring quality elementary education for every child in the district, with a strong emphasis on inclusivity, innovation, and community participation.</p>
+        <p>Through this portal, we aim to facilitate transparency, share best practices, and highlight the efforts taken by schools, teachers, and officers. Your suggestions and feedback are always welcome as we work together towards shaping a better future for our children.</p>
+        <p><strong>— DEEO, Nalbari</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About the Department</h2>
+    <p>The Elementary Education Department, Nalbari, works under the Government of Assam to provide inclusive, equitable, and quality education to children in the district. The department oversees government and aided elementary schools, implements national and state-level education schemes, monitors learning outcomes, and promotes innovative teaching practices.</p>
+  </section>
+
+  <section id="initiatives">
+    <h2>Key Initiatives</h2>
+    <ul>
+      <li>School Library Programme</li>
+      <li>Handwritten Magazine Competition</li>
+      <li>Mid-Day Meal Scheme Implementation</li>
+      <li>Teacher Training and Capacity Building</li>
+      <li>Monitoring of Foundational Literacy and Numeracy (FLN)</li>
+      <li>Community Mobilization and Parental Engagement</li>
+    </ul>
+  </section>
+
+ <section id="gallery">
+  <h2>Photo Gallery</h2>
+  <div class="gallery">
+    <img src="LINK_TO_IMAGE_1" alt="Photo 1" onclick="openLightbox(0)">
+    <img src="LINK_TO_IMAGE_2" alt="Photo 2" onclick="openLightbox(1)">
+    <!-- Add more <img> tags with increasing index -->
+  </div>
+</section>
+
+<!-- Lightbox HTML -->
+<div id="lightbox" onclick="closeLightbox(event)">
+  <span class="lightbox-arrow left" onclick="prevImage(event)">&#10094;</span>
+  <img id="lightbox-img" src="" alt="Expanded Image">
+  <span class="lightbox-arrow right" onclick="nextImage(event)">&#10095;</span>
+</div>
+
+
+  <section id="documents">
+    <h2>Important Documents</h2>
+    <div class="document-list">
+      <a href="LINK_TO_DOCUMENT_1" target="_blank">Annual Report 2024-25</a>
+      <a href="LINK_TO_DOCUMENT_2" target="_blank">Library Guidelines</a>
+      <a href="LINK_TO_DOCUMENT_3" target="_blank">School Survey Format</a>
+    </div>
+  </section>
+
+  <section id="schools">
+    <h2>Schools</h2>
+
+    <details><summary>Barkhetri Block</summary>
+      <details><summary>Cluster- A</summary><ul><li>School- 1</li><li>School- 2</li><li>School- 3</li></ul></details>
+      <details><summary>Cluster- B</summary><ul><li>School- 3</li><li>School- 4</li></ul></details>
+      <details><summary>Cluster- C</summary><ul><li>School- 5</li><li>School- 6</li></ul></details>
+    </details>
+
+    <details><summary>Borigog Banbhag Block</summary>
+  <details><summary>Borajol</summary>
+    <ul>
+      <li>Basan Priya LPS</li>
+      <li>Balipara EGS</li>
+      <li>Nonapar Banti LPS</li>
+      <li>No 1. Barajol LPS</li>
+      <li>Kayapar LPS</li>
+      <li>Palangdi LPS</li>
+      <li>Pub-Banbhag MES</li>
+    </ul>
+  </details>
+  <details><summary>No.1 Allia</summary>
+    <ul>
+      <li>Nava Sakti High Madrasa</li>
+      <li>Navasakti ME School</li>
+      <li>Allia Madhapur MES</li>
+      <li>Abhi Ram LPS</li>
+      <li>P.B. Allia Higher Secondary School</li>
+      <li>Namati LPS</li>
+      <li>No 1 Arara LPS</li>
+      <li>Choto Allia LPS</li>
+      <li>No 484 Allia LPS</li>
+    </ul>
+  </details>
+  <details><summary>Chataibari</summary>
+    <ul>
+      <li>Dhamdhama Pub Noipar LPS</li>
+      <li>No 2 Majusiral LPS</li>
+      <li>Keherua Chataibari LPS</li>
+      <li>Majusiral LPS</li>
+      <li>Dhamdhama Higher Secondary School</li>
+      <li>Rangafali MVS</li>
+      <li>Bhelamari MES</li>
+      <li>Balasupa LPS</li>
+      <li>Chataibari MES</li>
+      <li>Majusiral Milan MEM</li>
+      <li>Mohendra Narayan Ch. LPS</li>
+    </ul>
+  </details>
+  <details><summary>No. 1 Dihjari</summary>
+    <ul>
+      <li>Bonbhag Ghohkuchi HS</li>
+      <li>Bonbhag Khata Dihjari Secondary School</li>
+      <li>Khudrabistupur LPS</li>
+      <li>Milan Bidyapith MES</li>
+      <li>Hablakha LPS</li>
+      <li>Nilpur LPS</li>
+      <li>Dihjari LPS</li>
+      <li>Ghohkuchi LPS</li>
+    </ul>
+  </details>
+  <details><summary>Dhamdhama</summary>
+    <ul>
+      <li>Hirimba Bodo Academy HS</li>
+      <li>Dhamdhama Girls High School</li>
+      <li>Dhamdhama Milan LPS</li>
+      <li>Paschim Mahina LPS</li>
+      <li>Dhamdhama Bhelamari Milan LP</li>
+      <li>Mahina Digripar LPS</li>
+      <li>Mahina Nava Buniadi LPS</li>
+      <li>123 No Dhamdhama Jr Basic</li>
+      <li>Mahina Bunbari LPS</li>
+      <li>Dhamdhama Jr College</li>
+    </ul>
+  </details>
+  <details><summary>No.2 Pub Banbhag</summary>
+    <ul>
+      <li>907 No Ponar Kaunia LPS</li>
+      <li>2 No. Barajol LPS</li>
+      <li>Dhurkuchiyapara LPS</li>
+      <li>Barajol Anchalik MEM</li>
+      <li>Barajol Higher Secondary School</li>
+      <li>No2 Rampur Ajagara LPS</li>
+      <li>Ponar Kaunia Pragati Bidyapith MES</li>
+      <li>Barajol Girls High School</li>
+      <li>450 No Rampur Agagara LPS</li>
+      <li>Jab Jab Kuchi LPS</li>
+    </ul>
+  </details>
+  <details><summary>No.2 Allia</summary>
+    <ul>
+      <li>Paschim Banbhag Anchalik HS</li>
+      <li>Acharya Binowa High School</li>
+      <li>Chatto Allia Milan LPS</li>
+      <li>P B Anchalik MEM</li>
+      <li>567 No Gargari LPS</li>
+      <li>Pub Namati Jamiruddin LPS</li>
+      <li>Pub Narayan Gaon Navajyoti LPS</li>
+      <li>Badofa LPS</li>
+      <li>Naba Milan LPS</li>
+    </ul>
+  </details>
+</details>
+
+
+
+    <details><summary>Paschim Nalbari Block</summary>
+      <details><summary>Cluster- G</summary><ul><li>School- 13</li><li>School- 14</li></ul></details>
+      <details><summary>Cluster- H</summary><ul><li>School- 15</li><li>School- 16</li></ul></details>
+      <details><summary>Cluster- I</summary><ul><li>School- 17</li><li>School- 18</li></ul></details>
+    </details>
+
+    <details><summary>Pub Nalbari Block</summary>
+      <details><summary>Cluster- J</summary><ul><li>School- 19</li><li>School- 20</li></ul></details>
+      <details><summary>Cluster- K</summary><ul><li>School- 21</li><li>School- 22</li></ul></details>
+      <details><summary>Cluster- L</summary><ul><li>School- 23</li><li>School- 24</li></ul></details>
+    </details>
+
+    <details><summary>Urban Block</summary>
+      <details><summary>Cluster- M</summary><ul><li>School- 25</li><li>School- 26</li></ul></details>
+      <details><summary>Cluster- N</summary><ul><li>School- 27</li><li>School- 28</li></ul></details>
+      <details><summary>Cluster- O</summary><ul><li>School- 29</li><li>School- 30</li></ul></details>
+    </details>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>
+      <strong>District Elementary Education Officer (DEEO), Nalbari</strong><br>
+      Office of the DEEO, Nalbari<br>
+      P.O. & Dist: Nalbari, Assam - 781335<br>
+      Email: <a href="mailto:deeonalbari@gmail.com">deeonalbari@gmail.com</a><br>
+      Phone: +91-XXXXXXXXXX<br>
+      Facebook Page:
+      <a href="https://www.facebook.com/share/1AD7yEZ6tU/?mibextid=wwXIfr" target="_blank">
+        প্ৰাথমিক শিক্ষা বিভাগ, নলবাৰী
+      </a>
+    </p>
+  </section>
+</div>
+
+<footer>
+  <p>&copy; 2025 Elementary Education Department, Nalbari. All Rights Reserved.</p>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('menuItems').classList.toggle('show');
+  }
+
+  function closeMenu() {
+    document.getElementById('menuItems').classList.remove('show');
+  }
+
+  const allBlocks = document.querySelectorAll("#schools > details");
+  const allClusters = document.querySelectorAll("#schools details details");
+
+  allBlocks.forEach((block) => {
+    block.addEventListener("toggle", function () {
+      if (this.open) {
+        allBlocks.forEach((otherBlock) => {
+          if (otherBlock !== this) {
+            otherBlock.removeAttribute("open");
+          }
+        });
+      }
+    });
+  });
+
+  allClusters.forEach((cluster) => {
+    cluster.addEventListener("click", function (e) {
+      e.preventDefault();
+      const isOpen = this.hasAttribute("open");
+      allClusters.forEach((c) => c.removeAttribute("open"));
+      if (!isOpen) {
+        this.setAttribute("open", "");
+      }
+    });
+  });
+  const galleryImages = Array.from(document.querySelectorAll(".gallery img"));
+let currentImageIndex = 0;
+
+function openLightbox(index) {
+  currentImageIndex = index;
+  const lightbox = document.getElementById('lightbox');
+  const img = document.getElementById('lightbox-img');
+  img.src = galleryImages[currentImageIndex].src;
+  lightbox.style.display = 'flex';
+}
+
+function closeLightbox(e) {
+  if (e.target.id === 'lightbox') {
+    document.getElementById('lightbox').style.display = 'none';
+  }
+}
+
+function showImage(index) {
+  const img = document.getElementById('lightbox-img');
+  currentImageIndex = (index + galleryImages.length) % galleryImages.length;
+  img.src = galleryImages[currentImageIndex].src;
+}
+
+function nextImage(e) {
+  e.stopPropagation();
+  showImage(currentImageIndex + 1);
+}
+
+function prevImage(e) {
+  e.stopPropagation();
+  showImage(currentImageIndex - 1);
+}
+
+</script>
+
+</body>
+</html>
